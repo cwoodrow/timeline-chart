@@ -1,0 +1,13 @@
+{
+  "name": "timeline-chart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "unirest": "^0.5.1"
+  }
+}
