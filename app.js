@@ -5,9 +5,7 @@ const unirest = require('unirest');
 const path = require("path");
 const htmlToText = require('html-to-text');
 
-
 const app = express();
-
 
 app.engine('handlebars', expressHandlebars());
 app.set('view engine', 'handlebars');
@@ -20,9 +18,9 @@ app.get('/', (req, res) => {
   if (!query) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
   } else {
-    const colorsTabFromParameter = req.query['colors'] ? req.query['colors'].split("|") : undefined;
     let colors = undefined;
-    if (colorsTabFromParameter) {
+    if (req.query['colors']) {
+      const colorsTabFromParameter = req.query['colors'].split("|");
       colors = "[" + colorsTabFromParameter.map(color => {
         return "'#" + color + "'"
       }).join(",") + "]";
