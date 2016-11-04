@@ -1,3 +1,4 @@
+"use strict";
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const unirest = require('unirest');
