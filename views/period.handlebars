@@ -23,6 +23,11 @@
           {{#if colors}}
             colors: {{{colors}}},
           {{/if}}
+          {{#if tillNow}}
+            hAxis: {
+              maxValue: new Date(),
+            }
+          {{/if}}
         };
 
         chart.draw(dataTable,options);

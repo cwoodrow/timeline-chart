@@ -28,6 +28,8 @@ app.get('/', (req, res) => {
       }).join(",") + "]";
     }
 
+    const tillNow = req.query['tillNow'];
+
     unirest.get(createQueryURL(query))
       .end(response => {
         const events = [];
@@ -49,7 +51,8 @@ app.get('/', (req, res) => {
         res.render('period', {
           events: events,
           title,
-          colors
+          colors,
+          tillNow
         });
       });
   }

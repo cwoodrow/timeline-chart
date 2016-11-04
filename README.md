@@ -1,5 +1,7 @@
 # Timeline viewer
-Time line graph generator based on Wikidata. This quick and dirty !
+Time line graph generator based on Wikidata. This in a quick and dirty way !
+
+https://timeline-chart.herokuapp.com
 
 ## Exemples
 
@@ -10,9 +12,10 @@ A few examples :
 * https://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)
 
 ![](public/image/sample-timeline-chart.png)
+
 ## Data
 
-Data comes from (not so documented) `https://www.wikidata.org/`.
+Data comes from (not so documented) https://www.wikidata.org/.
 
 **P373** or **P1559**: Entity name
 
