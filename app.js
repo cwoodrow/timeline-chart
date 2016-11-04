@@ -1,13 +1,17 @@
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const unirest = require('unirest');
+const path = require("path");
+const htmlToText = require('html-to-text');
 
-var app = express();
+
+const app = express();
 
 
 app.engine('handlebars', expressHandlebars());
 app.set('view engine', 'handlebars');
 
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   var query = req.query['q'];
@@ -15,8 +19,7 @@ app.get('/', (req, res) => {
   console.log(query);
 
   if (!query) {
-    res.send('<h1 style="font-family:arial;">To create a timeline chart to compare wikipedia people and / or events : </h1>' +
-      '<a href="https://timeline-chart.herokuapp.com?q=Sarah_Bernhardt|Edmond_Rostand|American_Civil_War">&q=&lt;wikipedia_name1&gt;|&lt;wikipedia_name2&gt;|&lt;wikipedia_name3&gt;|...</a>');
+    res.sendFile(path.join(__dirname + '/public/home.html'));
   } else {
     unirest.get(createQueryURL(query))
       .end(response => {
@@ -24,8 +27,10 @@ app.get('/', (req, res) => {
         const entities = response.body.entities;
         const keys = Object.keys(entities);
 
-        keys.forEach(key => {
-          const event = parseEvent(entities[key]);
+        const split = query.split('|');
+
+        keys.forEach((key, id) => {
+          const event = parseEvent(entities[key], split[id]);
 
           if (event != null) {
             events.push(event);
@@ -49,7 +54,7 @@ app.listen(port, function() {
   console.log(`Example app listening on port ${port}!`);
 });
 
-const parseEvent = function(entity) {
+const parseEvent = function(entity, query) {
   if (!entity.claims) {
     return null;
   }
@@ -61,6 +66,9 @@ const parseEvent = function(entity) {
     event.name = entity.claims["P373"][0].mainsnak.datavalue.value;
   } else if (entity.claims["P1559"]) {
     event.name = entity.claims["P1559"][0].mainsnak.datavalue.value.text;
+  } else {
+    console.log(query.replace(/_/g, " "));
+    event.name = query.replace(/_/g, " ").replace(/'/g, "\\\'");
   }
 
   if (entity.claims["P569"]) {
@@ -73,6 +81,17 @@ const parseEvent = function(entity) {
     if (entity.claims["P582"]) {
       event.end = entity.claims["P582"][0].mainsnak.datavalue.value.time.substring(1);
     }
+  } else if (entity.claims["P571"]) {
+    event.start = entity.claims["P571"][0].mainsnak.datavalue.value.time.substring(1);
+    if (entity.claims["P576"]) {
+      event.end = entity.claims["P576"][0].mainsnak.datavalue.value.time.substring(1);
+    }
+  } else if (entity.claims["P577"]) {
+    event.start = entity.claims["P577"][0].mainsnak.datavalue.value.time.substring(1);
+    event.end = entity.claims["P577"][0].mainsnak.datavalue.value.time.substring(1);
+  } else if (entity.claims["P619"]) {
+    event.start = entity.claims["P619"][0].mainsnak.datavalue.value.time.substring(1);
+    event.end = entity.claims["P619"][0].mainsnak.datavalue.value.time.substring(1);
   }
 
   if (event.start) {
