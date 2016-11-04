@@ -19,8 +19,13 @@ app.get('/', (req, res) => {
   if (!query) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
   } else {
-    const colorsTabFromParameter = req.query['colors']?req.query['colors'].split("|"):[];
-    const colors = "[" + colorsTabFromParameter.map(color => {return "'#"+color+"'"}).join(",") + "]";
+    const colorsTabFromParameter = req.query['colors'] ? req.query['colors'].split("|") : undefined;
+    let colors = undefined;
+    if (colorsTabFromParameter) {
+      colors = "[" + colorsTabFromParameter.map(color => {
+        return "'#" + color + "'"
+      }).join(",") + "]";
+    }
 
     unirest.get(createQueryURL(query))
       .end(response => {
