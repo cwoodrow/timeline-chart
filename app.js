@@ -76,8 +76,8 @@ const parseEvent = function(entity, query) {
   } else if (entity.claims["P1559"]) {
     event.name = entity.claims["P1559"][0].mainsnak.datavalue.value.text;
   } else {
-    console.log(query.replace(/_/g, " "));
-    event.name = query.replace(/_/g, " ").replace(/'/g, "\\\'");
+    console.log(query + "," + query.replace(/_/g, " "));
+    event.name = query.replace(/(.*)_\(.*\)/,"$1").replace(/_/g, " ").replace(/'/g, "\\\'");
   }
 
   if (entity.claims["P569"]) {
