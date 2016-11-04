@@ -14,13 +14,14 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  var query = req.query['q'];
-
-  console.log(query);
+  const query = req.query['q'];
 
   if (!query) {
     res.sendFile(path.join(__dirname + '/public/home.html'));
   } else {
+    const colorsTabFromParameter = req.query['colors']?req.query['colors'].split("|"):[];
+    const colors = "[" + colorsTabFromParameter.map(color => {return "'#"+color+"'"}).join(",") + "]";
+
     unirest.get(createQueryURL(query))
       .end(response => {
         const events = [];
@@ -41,7 +42,8 @@ app.get('/', (req, res) => {
 
         res.render('period', {
           events: events,
-          title
+          title,
+          colors
         });
       });
   }

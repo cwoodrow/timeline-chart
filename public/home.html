@@ -15,33 +15,58 @@
             <div class="starter-template">
                 <h1>Timeline charts</h1>
                 <p class="lead">Create timeline charts dynamically, using URL<br/><br/>
-                Content comes from Wikipedia (see : https://www.wikidata.org, gentle).<br/><br/>
-                Create a chart, use URL : <i>http://timeline-chart.herokuapp.com?q=&lt;wikipedia_name1&gt;|&lt;wikipedia_name2&gt;|...</i> <br/><br/>
-                <b> Example : </b> <a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)">http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)</a></br></br>
+                    Content comes from Wikipedia (see : https://www.wikidata.org, gentle).<br/><br/>
+                    Create a chart, use URL :
+                    <i>http://timeline-chart.herokuapp.com?q=&lt;wikipedia_name1&gt;|&lt;wikipedia_name2&gt;|...</i>
+                    <br/>
+                    <br>
+                        <b>
+                            Example :
+                        </b>
+                        <a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)">
+                            http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)</a>
+                    </br>
+                </br>
 
                 Will create this chart :<br/>
-                <img src="image/sample-timeline-chart.png" width="50%"/> <br/><br/>
+                <img src="image/sample-timeline-chart.png" width="50%"/>
+                <br/><br/>
 
-                <a href="https://github.com/cwoodrow/timeline-chart">Github</a>
-                </p>
+                Colors are configurable using the parameter
+                <b>colors</b>
+                (html colors' codes separated by a '|') :
+                <br/>
+                <a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|The_Beatles|The_Who&colors=cbb69d|603913">
+                    http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|The_Beatles|The_Who&colors=cbb69d|603913</a>
+                <br/><br/>
 
-            </div>
+                <a href="https://github.com/cwoodrow/timeline-chart">Github</a><br/><br/>
+            </p>
 
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </div>
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-          ga('create', 'UA-86862021-1', 'auto');
-          ga('send', 'pageview');
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            },
+            i[r].l = 1 * new Date();
+            a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        </script>
-    </body>
+        ga('create', 'UA-86862021-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
 </html>
