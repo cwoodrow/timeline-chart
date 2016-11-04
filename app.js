@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
     }
 
     const tillNow = req.query['tillNow'];
+    const userTitlle = req.query['title'];
 
     unirest.get(createQueryURL(query))
       .end(response => {
@@ -44,7 +45,7 @@ app.get('/', (req, res) => {
           }
         });
 
-        const title = events.map(event => event.name).join(" vs ");
+        const title = userTitlle ? userTitlle : events.map(event => event.name).join(" vs ");
 
         res.render('period', {
           events: events,
