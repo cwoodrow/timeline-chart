@@ -14,44 +14,83 @@
 
             <div class="starter-template">
                 <h1>Timeline charts</h1>
-                <p class="lead">Create timeline charts dynamically, using URL + Parameters<br/><br/>
-                    Content comes from Wikipedia (see : https://www.wikidata.org, gentle).<br/><br/>
-                    Create a chart, use URL :
-                    <i>http://timeline-chart.herokuapp.com?q=&lt;wikipedia_name1&gt;|&lt;wikipedia_name2&gt;|...</i>
-                    <br/>
-                    <br>
-                        <b>
-                            Example :
-                        </b>
-                        <a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)">
-                            http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)</a>
-                        <br/>
-                        Leading to data from : <a href="https://en.wikipedia.org/wiki/The_Rolling_Stones">https://en.wikipedia.org/wiki/The_Rolling_Stones</a> and so on...
-                    </br>
-                </br>
-
-                Will create this chart :<br/>
-                <img src="image/sample-timeline-chart.png" width="50%"/>
-                <br/><br/>
-
-                Colors are configurable using the parameter
-                <b>colors</b>
-                (html colors' codes separated by a '|') :
-                <br/>
-                <a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|The_Beatles|The_Who&colors=cbb69d|603913">
-                    http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|The_Beatles|The_Who&colors=cbb69d|603913</a>
-                <br/><br/>
-
-                To set max date to now, just add parameter <b>tillNow=true</b> : <br/>
-                <a href="http://timeline-chart.herokuapp.com?q=Robert_Johnson|Brian_Jones|Alan_Wilson_(musician)|Jimi_Hendrix|Janis_Joplin|Jim_Morrison|Kurt_Cobain|Amy_Winehouse&colors=000000&tillNow=true">
-                    http://timeline-chart.herokuapp.com?q=Robert_Johnson|Brian_Jones|Alan_Wilson_(musician)|Jimi_Hendrix|Janis_Joplin|Jim_Morrison|Kurt_Cobain|Amy_Winehouse&colors=000000&tillNow=true</a>
-                <br/><br/>
-
-                To set title, just add parameter <b>title=custom title</b> : <br/>
-                <a href="http://timeline-chart.herokuapp.com?q=Robert_Johnson|Brian_Jones|Alan_Wilson_(musician)|Jimi_Hendrix|Janis_Joplin|Jim_Morrison|Kurt_Cobain|Amy_Winehouse&colors=000000&tillNow=true&title=27 Club">
-                    http://timeline-chart.herokuapp.com?q=Robert_Johnson|Brian_Jones|Alan_Wilson_(musician)|Jimi_Hendrix|Janis_Joplin|Jim_Morrison|Kurt_Cobain|Amy_Winehouse&colors=000000&tillNow=true&title=27 Club</a>
-                <br/><br/>
+                <p class="lead" style="text-align:center">Create timeline charts dynamically, using URL + Parameters<br/><br/>
+                    Content comes from Wikipedia (see : <a href="https://www.wikidata.org">https://www.wikidata.org</a>, gentle API's tricky :D). Create a chart, use URL :
+                    <b>http://timeline-chart.herokuapp.com?q=&lt;wikipedia_name1&gt;|&lt;wikipedia_name2&gt;|...</b>
+                    <br/><br/>
+                    <b>
+                        Example :
+                    </b>
+                    <a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)">
+                        http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|(I_Can't_Get_No)_Satisfaction|Exile_on_Main_St|Miss_You_(The_Rolling_Stones_song)</a>
+                    <br/><br/>
+                    Will create this chart :<br/>
+                    <img src="image/sample-timeline-chart.png" width="50%"/>
+                    <br/><br/>
+                  </p>
+                  <p>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th colspan="2">
+                            Entries
+                          </th>
+                        </tr>
+                        <tr>
+                          <th>Entry</th>
+                          <th>URL</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>The_Rolling_Stones</td>
+                          <td><a href="https://en.wikipedia.org/wiki/The_Rolling_Stones">https://en.wikipedia.org/wiki/The_Rolling_Stones</a></td>
+                        </tr>
+                        <tr>
+                          <td>(I_Can't_Get_No)_Satisfaction</td>
+                          <td><a href="https://en.wikipedia.org/wiki/(I_Can't_Get_No)_Satisfaction">https://en.wikipedia.org/wiki/(I_Can't_Get_No)_Satisfaction</a></td>
+                        </tr>
+                        <tr>
+                          <td>Exile_on_Main_St</td>
+                          <td><a href="https://en.wikipedia.org/wiki/Exile_on_Main_St">https://en.wikipedia.org/wiki/Exile_on_Main_St</a></td>
+                        </tr>
+                        <tr>
+                          <td>Miss_You_(The_Rolling_Stones_song)</td>
+                          <td><a href="https://en.wikipedia.org/wiki/Miss_You_(The_Rolling_Stones_song)">https://en.wikipedia.org/wiki/Miss_You_(The_Rolling_Stones_song)</a></td>
+                        </tr>
+                      </tbody>
+                      <thead>
+                        <tr>
+                          <th colspan="2">
+                            Options
+                          </th>
+                        </tr>
+                        <tr>
+                          <th>Option</th>
+                          <th>Example</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><b>colors=&lt;html-color1&gt;|&lt;html-color1&gt;</b></td>
+                          <td><a href="http://timeline-chart.herokuapp.com?q=The_Rolling_Stones|The_Beatles|The_Who&colors=cbb69d|603913">
+                              &colors=cbb69d|603913</a></td>
+                        </tr>
+                        <tr>
+                          <td><b>tillNow=true</b>, max date to now</td>
+                          <td><a href="http://timeline-chart.herokuapp.com?q=Robert_Johnson|Brian_Jones|Alan_Wilson_(musician)|Jimi_Hendrix|Janis_Joplin|Jim_Morrison|Kurt_Cobain|Amy_Winehouse&colors=000000&tillNow=true">
+                              &tillNow=true</a></td>
+                        </tr>
+                        <tr>
+                          <td><b>title=custom title</b></td>
+                          <td><a href="http://timeline-chart.herokuapp.com?q=Robert_Johnson|Brian_Jones|Alan_Wilson_(musician)|Jimi_Hendrix|Janis_Joplin|Jim_Morrison|Kurt_Cobain|Amy_Winehouse&colors=000000&tillNow=true&title=27 Club">
+                              &title=27 Club</a></td>
+                        </tr>
+                    </table>
+                  </p>
+              <p style="text-align:center">
                 <img src="image/GitHub-Mark-64px.png"></img>&nbsp;<a href="https://github.com/cwoodrow/timeline-chart">Github</a><br/><br/>
+              </p>
             </p>
 
         </div>
