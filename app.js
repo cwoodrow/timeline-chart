@@ -5,6 +5,9 @@ const unirest = require('unirest');
 const path = require("path");
 const htmlToText = require('html-to-text');
 
+const host = "http://" + (process.env.HEROKU_APP_NAME ? process.env.HEROKU_APP_NAME+".herokuapp.com" : "localhost:3000");
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 app.engine('handlebars', expressHandlebars());
@@ -16,7 +19,9 @@ app.get('/', (req, res) => {
   const query = req.query['q'];
 
   if (!query) {
-    res.sendFile(path.join(__dirname + '/public/home.html'));
+    res.render('home', {
+      host
+    });
   } else {
     let colors = undefined;
     if (req.query['colors']) {
@@ -57,8 +62,6 @@ app.get('/', (req, res) => {
   }
 
 });
-
-var port = process.env.PORT || 3000;
 
 app.listen(port, function() {
   console.log(`Example app listening on port ${port}!`);
