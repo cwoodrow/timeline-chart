@@ -19,6 +19,8 @@
         {{/each}}
         ]);
 
+        var height = (dataTable.getNumberOfRows() + 1) * 45;
+
         var options = {
           {{#if colors}}
             colors: {{{colors}}},
@@ -26,8 +28,9 @@
           {{#if tillNow}}
             hAxis: {
               maxValue: new Date(),
-            }
+            },
           {{/if}}
+          height
         };
 
         chart.draw(dataTable,options);
@@ -44,6 +47,7 @@
   </head>
   <body>
     <h5 style="font-family:arial;"> {{title}} </h5>
-    <div id="timeline" style="height: 100%"></div>
+    <div id="timeline"></div>
+    <p style="font-family:arial;font-size:10;text-align:right"><b>powered by <a href="/">timeline-chart</a></b></p>
   </body>
 </html>
