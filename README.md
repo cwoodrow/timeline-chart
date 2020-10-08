@@ -1,5 +1,5 @@
 # Timeline viewer
-Time line graph generator based on Wikidata. This in a quick and dirty way !
+Time line graph generator based on Wikidata. This in a quick and dirty way !!
 
 https://timeline-chart.herokuapp.com
 
