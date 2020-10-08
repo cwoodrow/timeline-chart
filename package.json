@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.20.0",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "webshot": "^0.18.0"
